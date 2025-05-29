@@ -28,7 +28,7 @@ const renderWithBlueSmile = (typed: string): React.ReactNode[] => {
 };
 
   return (
-    <section className="min-h-[75vh] bg-background py-16 md:py-20 mt-12 md:mt-0 flex items-center relative transition-colors duration-300">
+    <section className="min-h-[75vh] bg-background py-16 md:py-20 mt-0 md:mt-0 flex items-center relative transition-colors duration-300">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center min-h-[70vh]">
           {/* Left Content */}
