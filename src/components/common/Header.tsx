@@ -10,21 +10,16 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "../ui/ThemeToggle";
+import AppointmentButton from "./AppointmentButton";
 
 // Nav items shared between components
-const navItems = [
-  "Home",
-  "About", 
-  "Services",
-  "Gallery",
-  "Contact Us",
-];
+const navItems = ["Home", "About", "Services", "Gallery", "Contact Us"];
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="w-full">
+    // <div className="w-full">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex h-14 sm:h-16 items-center px-4 sm:px-8">
           {/* Mobile menu button */}
@@ -84,27 +79,20 @@ function Header() {
           {/* Right side buttons */}
           <div className="flex items-center gap-2">
             {/* Book Appointment Button */}
-            <Button
-              className="hidden md:inline-flex bg-[#FF5722] hover:bg-[#E64A19] text-white rounded-full px-4 sm:px-6 py-2 font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-200"
-              style={{ 
-                boxShadow: "0 4px 15px rgba(255, 87, 34, 0.3)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = "0 6px 20px rgba(255, 87, 34, 0.4)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = "0 4px 15px rgba(255, 87, 34, 0.3)";
-              }}
+            <AppointmentButton
+              className="hidden md:inline-flex rounded-full px-4 sm:px-6 py-2 text-sm shadow-lg hover:shadow-xl"
+              size="default"
+              showIcon={false}
             >
               <span className="hidden sm:inline">Book Appointment</span>
               <span className="sm:hidden">Book here</span>
-            </Button>
+            </AppointmentButton>
 
             <ModeToggle />
           </div>
         </div>
       </header>
-    </div>
+    // </div>
   );
 }
 
@@ -121,9 +109,9 @@ function MobileNav() {
           className="rounded-full object-cover"
         />
       </div>
-      
-                    <div className="border-t border-gray-200 dark:border-gray-700 mb-4" />
-      
+
+      <div className="border-t border-gray-200 dark:border-gray-700 mb-4" />
+
       {/* Navigation items */}
       <div className="flex flex-col space-y-1">
         {navItems.map((item) => (
@@ -135,13 +123,15 @@ function MobileNav() {
             {item}
           </a>
         ))}
-        
+
         {/* Mobile Book Appointment Button */}
-        <Button
-          className="mx-4 mt-4 bg-[#FF5722] hover:bg-[#E64A19] text-white rounded-full font-semibold"
+        <AppointmentButton
+          className="mx-4 mt-4 rounded-full font-semibold"
+          size="default"
+          showIcon={false}
         >
           Book Appointment
-        </Button>
+        </AppointmentButton>
       </div>
     </div>
   );

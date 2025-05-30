@@ -6,12 +6,12 @@ import { Facebook, Instagram, MessageCircle, Mail } from "lucide-react";
 
 const clinicDetails = {
   name: "Dr. Farsana's Dental Clinic",
-  address: "1st Floor, City Mall, Main Road, Calicut, Kerala, India",
-  phone: "+91 98765 43210",
+  address: "1st Floor, SMT complex, Maranchery, Kerala, India",
+  phone: "+91 9895202100",
   email: "contact@farsanadental.com",
-  places: ["Calicut", "Kozhikode", "Kerala"],
+  places: ["Maranchery", "Malappuram", "Kerala"],
   hours: [
-    { day: "Monday - Saturday", time: "10:00 AM – 7:00 PM" },
+    { day: "Monday - Saturday", time: "10:00 AM – 6:00 PM" },
     { day: "Sunday", time: "Closed" },
   ],
 };
@@ -25,7 +25,7 @@ const socialLinks = [
   {
     icon: <Instagram className="h-5 w-5" />,
     label: "Instagram",
-    href: "https://instagram.com/",
+    href: "https://www.instagram.com/dr.farsanasdentalclinic?igsh=MWJrYW45MHNyZXMyMA==",
   },
   {
     icon: <MessageCircle className="h-5 w-5" />,
@@ -147,7 +147,7 @@ const Footer = () => {
             </div>
             
             <p className="text-sm text-muted-foreground md:text-right">
-              Follow us for updates & offers!
+              Follow us for updates!
             </p>
           </div>
         </div>
