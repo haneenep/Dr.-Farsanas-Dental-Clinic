@@ -11,13 +11,14 @@ import {
 import { Menu } from "lucide-react";
 import { ModeToggle } from "../ui/ThemeToggle";
 import AppointmentButton from "./AppointmentButton";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 // Nav items shared between components
 const navItems = ["Home", "About", "Services", "Gallery", "Contact Us"];
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -65,15 +66,24 @@ function Header() {
 
         {/* Desktop Navigation - Centered */}
         <nav className="hidden md:flex flex-grow justify-center items-center">
-          {navItems.map((item) => (
-            <Link
-              to={`${item.toLowerCase().replace(/\s+/g, "-")}`}
-              key={item}
-              className="px-3 py-2 rounded-md text-foreground hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 text-sm font-medium whitespace-nowrap transition-all duration-200 ease-in-out"
-            >
-              {item}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const path = `/${item.toLowerCase().replace(/\s+/g, "-")}`;
+            const isActive = location.pathname === path;
+            return (
+              <Link
+                to={path}
+                key={item}
+                className={`px-3 py-2 rounded-md text-sm font-medium whitespace-nowrap transition-all duration-200 ease-in-out border-b-2
+                  ${
+                    isActive
+                      ? "border-sky-500 text-sky-600 dark:text-sky-400"
+                      : "border-transparent text-foreground hover:text-sky-600 dark:hover:text-sky-400 hover:border-sky-400"
+                  }`}
+              >
+                {item}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Right side buttons */}
@@ -113,15 +123,24 @@ function MobileNav() {
 
       {/* Navigation items */}
       <div className="flex flex-col space-y-1">
-        {navItems.map((item) => (
-          <Link
-            to={`${item.toLowerCase().replace(/\s+/g, "-")}`}
-            key={item}
-            className="block px-4 py-3 text-center text-foreground hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 rounded-md transition-colors"
-          >
-            {item}
-          </Link>
-        ))}
+        {navItems.map((item) => {
+          const path = `/${item.toLowerCase().replace(/\s+/g, "-")}`;
+          const isActive = location.pathname === path;
+          return (
+            <Link
+              to={path}
+              key={item}
+              className={`px-3 py-2 rounded-md text-sm font-medium whitespace-nowrap transition-all duration-200 ease-in-out border-b-2
+                ${
+                  isActive
+                    ? "border-sky-500 text-sky-600 dark:text-sky-400"
+                    : "border-transparent text-foreground hover:text-sky-600 dark:hover:text-sky-400 hover:border-sky-400"
+                }`}
+            >
+              {item}
+            </Link>
+          );
+        })}
 
         {/* Mobile Book Appointment Button */}
         <AppointmentButton

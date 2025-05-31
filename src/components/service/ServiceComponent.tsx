@@ -27,7 +27,6 @@ const getCloudinaryUrl = (
   return `${CLOUDINARY_BASE_URL}/w_${width},h_${height},c_${crop},q_${quality},f_${format}/${publicId}`;
 };
 
-// Lazy load images only when needed
 const services = [
   {
     id: 1,
@@ -148,7 +147,6 @@ const contentVariants = {
   exit: { opacity: 0, x: 40, scale: 0.97, transition: { duration: 0.4, type: "spring" } },
 };
 
-// Image component with preloading and error handling
 type OptimizedImageProps = {
   src: string;
   alt: string;
