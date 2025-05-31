@@ -1,6 +1,9 @@
 import { Activity, Camera, Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const DentalServicesSection = () => {
+  const navigate = useNavigate();
   const services = [
     {
       id: 1,
@@ -29,31 +32,47 @@ const DentalServicesSection = () => {
   ];
 
   const handleMoreServices = () => {
-    // Replace with your actual navigation logic
-    console.log("Navigate to services page");
-    // Example: window.location.href = '/services';
-    // Or if using React Router: navigate('/services');
+    navigate('/services');
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.15, duration: 0.6, type: "spring" }
+    }),
   };
 
   return (
     <div className="bg-background/95 text-foreground py-16 px-4 border-b backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, type: "spring" }}
+        >
           <h2 className="text-5xl md:text-6xl font-medium mb-4 text-foreground">
             Services
           </h2>
           <p className="text-2xl md:text-3xl font-light text-muted-foreground">
             at Dr. Farsana's Dental Clinic
           </p>
-        </div>
+        </motion.div>
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {services.map((service) => (
-            <div
+          {services.map((service, i) => (
+            <motion.div
               key={service.id}
               className="relative group bg-background/80 border rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105"
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={cardVariants}
             >
               {/* Background Image */}
               <div 
@@ -82,15 +101,23 @@ const DentalServicesSection = () => {
                   {service.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* More Services Button */}
-        <div className="text-center">
-          <button
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, type: "spring" }}
+        >
+          <motion.button
             onClick={handleMoreServices}
-            className="inline-flex items-center px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            className="inline-flex items-center px-8 py-4 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            whileHover={{ scale: 1.08, boxShadow: "0 8px 24px rgba(56,189,248,0.25)" }}
+            whileTap={{ scale: 0.97 }}
           >
             <span className="mr-2">More Services</span>
             <svg
@@ -106,8 +133,8 @@ const DentalServicesSection = () => {
                 d="M9 5l7 7-7 7"
               />
             </svg>
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </div>
   );

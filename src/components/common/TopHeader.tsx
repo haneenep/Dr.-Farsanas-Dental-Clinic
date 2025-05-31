@@ -18,11 +18,11 @@ function TopHeader() {
           </div>
           <div className="flex items-center space-x-2">
             <a
-            href="mailto:contact@dentalwellnessthrissur.com"
+            href="mailto:drfarsanasdentalclinic@gmail.com"
             className="flex items-center space-x-2 hover:underline focus:outline-none focus:ring-2 focus:ring-white rounded"
           >
             <Mail className="h-4 w-4" />
-            <span>contact@dentalwellnessthrissur.com</span>
+            <span>drfarsanasdentalclinic@gmail.com</span>
           </a>
           </div>
         </div>

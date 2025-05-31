@@ -1,5 +1,29 @@
 import { Card, CardContent } from '../ui/card';
 import IntroMessage from '../lib/BlurTextComponent';
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.25,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const popVariants = {
+  hidden: { scale: 0.8, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 20,
+    },
+  },
+};
 
 const AboutDentaClinic = () => {
   return (
@@ -41,10 +65,19 @@ const AboutDentaClinic = () => {
             </Card>
           </div>
 
-          {/* Right Side - Image Grid */}
-          <div className="flex-none lg:flex-[0_0_60%] w-full lg:w-3/5 relative h-[500px] lg:h-[600px]">
+          {/* Right Side - Image Grid with Staggered Motion */}
+          <motion.div
+            className="flex-none lg:flex-[0_0_60%] w-full lg:w-3/5 relative h-[500px] lg:h-[600px]"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             {/* Main dental office image - Top Left */}
-            <div className="absolute top-0 left-0 w-3/5 z-10">
+            <motion.div
+              className="absolute top-0 left-0 w-3/5 z-10"
+              variants={popVariants}
+            >
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
                   src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=300&fit=crop&crop=center"
@@ -52,10 +85,13 @@ const AboutDentaClinic = () => {
                   className="w-full h-44 md:h-48 lg:h-56 object-cover block"
                 />
               </div>
-            </div>
+            </motion.div>
 
             {/* Happy patient image - Top Right */}
-            <div className="absolute top-16 right-0 w-1/2 z-20">
+            <motion.div
+              className="absolute top-16 right-0 w-1/2 z-20"
+              variants={popVariants}
+            >
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
                   src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&h=250&fit=crop&crop=face"
@@ -63,10 +99,13 @@ const AboutDentaClinic = () => {
                   className="w-full h-40 md:h-44 lg:h-48 object-cover block"
                 />
               </div>
-            </div>
+            </motion.div>
 
             {/* Elderly patient image - Bottom Left */}
-            <div className="absolute bottom-20 left-0 w-[45%] z-20">
+            <motion.div
+              className="absolute bottom-20 left-0 w-[45%] z-20"
+              variants={popVariants}
+            >
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
                   src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&h=200&fit=crop&crop=face"
@@ -74,10 +113,13 @@ const AboutDentaClinic = () => {
                   className="w-full h-36 md:h-40 lg:h-44 object-cover block"
                 />
               </div>
-            </div>
+            </motion.div>
 
             {/* Equipment image - Bottom Right */}
-            <div className="absolute bottom-0 right-0 w-[55%] z-10">
+            <motion.div
+              className="absolute bottom-0 right-0 w-[55%] z-10"
+              variants={popVariants}
+            >
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
                   src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=300&h=250&fit=crop&crop=center"
@@ -85,8 +127,8 @@ const AboutDentaClinic = () => {
                   className="w-full h-40 md:h-44 lg:h-48 object-cover block"
                 />
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

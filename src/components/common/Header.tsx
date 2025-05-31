@@ -19,7 +19,6 @@ function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    // <div className="w-full">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex h-14 sm:h-16 items-center px-4 sm:px-8">
           {/* Mobile menu button */}
@@ -68,7 +67,7 @@ function Header() {
             {navItems.map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+                href={`${item.toLowerCase().replace(/\s+/g, "-")}`}
                 className="px-3 py-2 rounded-md text-foreground hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 text-sm font-medium whitespace-nowrap transition-all duration-200 ease-in-out"
               >
                 {item}
@@ -92,7 +91,6 @@ function Header() {
           </div>
         </div>
       </header>
-    // </div>
   );
 }
 
@@ -117,7 +115,7 @@ function MobileNav() {
         {navItems.map((item) => (
           <a
             key={item}
-            href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+            href={`${item.toLowerCase().replace(/\s+/g, "-")}`}
             className="block px-4 py-3 text-center text-foreground hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 rounded-md transition-colors"
           >
             {item}

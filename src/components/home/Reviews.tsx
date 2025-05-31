@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const PatientReviewsSection = () => {
   const [currentReview, setCurrentReview] = useState(0);
@@ -31,7 +32,13 @@ const PatientReviewsSection = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-[400px] md:min-h-[60vh]">
+    <motion.div
+      className="flex flex-col md:flex-row min-h-[400px] md:min-h-[60vh]"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.7, type: "spring" }}
+    >
       {/* Left Side - Review */}
       <div className="flex-1 bg-black text-white flex items-center justify-center relative py-10 md:py-0">
         {/* Navigation Arrows */}
@@ -114,7 +121,7 @@ const PatientReviewsSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
