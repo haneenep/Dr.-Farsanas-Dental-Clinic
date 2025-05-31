@@ -1,5 +1,3 @@
-import React from "react";
-
 const ComingSoonPage = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
