@@ -1,110 +1,136 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const CLOUDINARY_CLOUD_NAME = "dyd8cwf8e";
+const CLOUDINARY_BASE_URL = `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload`;
+
+interface CloudinaryOptions {
+  width?: number;
+  height?: number;
+  quality?: string;
+  format?: string;
+  crop?: string;
+}
+
+const getCloudinaryUrl = (
+  publicId: string,
+  options: CloudinaryOptions = {}
+): string => {
+  const {
+    width = 800,
+    height = 600,
+    quality = "auto",
+    format = "auto",
+    crop = "fill"
+  } = options;
+  
+  return `${CLOUDINARY_BASE_URL}/w_${width},h_${height},c_${crop},q_${quality},f_${format}/${publicId}`;
+};
+
 // Lazy load images only when needed
 const services = [
   {
     id: 1,
     title: "Root Canal",
-    image: "src/assets/services/root-canal.jpg", // Use string paths instead of imports
+    image: getCloudinaryUrl("services/nsw5dbbnfe2sno97lhwa"),
     description: "Advanced endodontic treatment to save your natural teeth and eliminate pain with modern techniques.",
     features: ["Pain-free procedure", "Same-day treatment", "Advanced technology", "Expert care"],
   },
   {
     id: 2,
     title: "Restorations",
-    image: "src/assets/services/restoration.jpg",
+    image: getCloudinaryUrl("services/ljvwdpetenwmvqdnsmqu"),
     description: "Comprehensive tooth restoration using premium materials for lasting results and natural appearance.",
     features: ["Durable materials", "Natural appearance", "Long-lasting results", "Custom fit"],
   },
   {
     id: 3,
     title: "Crown and Bridge",
-    image: "src/assets/services/crown-and-bridge.jpg",
+    image: getCloudinaryUrl("services/yt6mfga4bxiomhzndubr"),
     description: "Custom-made crowns and bridges designed for optimal function and seamless aesthetics.",
     features: ["Custom fit", "Premium materials", "Natural look", "Long-term solution"],
   },
   {
     id: 4,
     title: "Veneers",
-    image: "src/assets/services/veneers.jpg",
+    image: getCloudinaryUrl("services/scuvwrjqzajfpplzfxhw"),
     description: "Transform your smile with ultra-thin, custom-crafted porcelain veneers for instant results.",
     features: ["Instant transformation", "Stain resistant", "Minimal prep", "Natural appearance"],
   },
   {
     id: 5,
     title: "Digital X-Ray",
-    image: "src/assets/services/digital-x-ray.jpg",
+    image: getCloudinaryUrl("services/kpnyhsdvhidhhdt1dcwj"),
     description: "State-of-the-art digital imaging technology for accurate diagnosis and precise treatment planning.",
     features: ["Instant results", "Low radiation", "High precision", "Digital storage"],
   },
   {
     id: 6,
     title: "Child Dental Treatment",
-    image: "src/assets/services/Child-dental-treatment.jpg",
+    image: getCloudinaryUrl("services/ss8i1u0tbjumqlccprld"),
     description: "Specialized pediatric dental care delivered in a comfortable, child-friendly environment.",
     features: ["Gentle approach", "Fun environment", "Preventive focus", "Expert pediatric care"],
   },
   {
     id: 7,
     title: "Braces",
-    image: "src/assets/services/braces.jpg",
+    image: getCloudinaryUrl("services/goytarcgrtn33jxyjlki"),
     description: "Comprehensive orthodontic treatment options for perfectly aligned teeth and improved bite.",
     features: ["Multiple options", "Regular monitoring", "Expert care", "Proven results"],
   },
   {
     id: 8,
     title: "Clear Aligners",
-    image: "src/assets/services/Clear aligners.jpg",
+    image: getCloudinaryUrl("services/c4lu6apnowkistdi2q2i"),
     description: "Nearly invisible orthodontic treatment for discreet teeth straightening without metal braces.",
     features: ["Nearly invisible", "Removable", "Comfortable", "Effective results"],
   },
   {
     id: 9,
     title: "Teeth Cleaning",
-    image: "src/assets/services/teath cleaning.jpg",
+    image: getCloudinaryUrl("services/hq2c23mh5njidsh6e2il"),
     description: "Professional dental hygiene services to maintain optimal oral health and prevent disease.",
     features: ["Deep cleaning", "Plaque removal", "Fresh breath", "Preventive care"],
   },
   {
     id: 10,
     title: "Dentures",
-    image: "src/assets/services/dentures.jpg",
+    image: getCloudinaryUrl("services/fxc5apl8ccfaipqn5tlh"),
     description: "Custom-fitted dentures designed for complete smile restoration and comfortable functionality.",
     features: ["Perfect fit", "Natural appearance", "Comfortable wear", "Durable construction"],
   },
   {
     id: 11,
     title: "Implants",
-    image: "src/assets/services/implant.png",
+    image: getCloudinaryUrl("services/tpxpyyx2avdjavifvgsx"),
     description: "Permanent tooth replacement solution using titanium implants for natural feel and function.",
     features: ["Permanent solution", "Natural feel", "Bone preservation", "Long-lasting"],
   },
   {
     id: 12,
     title: "Oral Surgery",
-    image: "src/assets/services/oral-surgery.jpg",
+    image: getCloudinaryUrl("services/r9ahbwjkffwvb8z2mcr4"),
     description: "Minor and major oral surgical procedures performed with precision, care and advanced techniques.",
     features: ["Expert surgeons", "Advanced techniques", "Quick recovery", "Comprehensive care"],
   },
   {
     id: 13,
     title: "Dental Jewellery",
-    image: "src/assets/services/Dental-Jewellery.jpg",
+    image: getCloudinaryUrl("services/cognogkcyx20rhgcuju6"),
     description: "Add sparkle to your smile with safe, removable dental gems and unique accessories.",
     features: ["Safe materials", "Easy removal", "Unique designs", "Professional application"],
   },
   {
     id: 14,
     title: "Smile Design",
-    image: "src/assets/services/smile-design.jpg",
+    image: getCloudinaryUrl("services/uxorjscxw7iuynbjr8ie"),
     description: "Comprehensive smile makeover combining multiple treatments for stunning, natural-looking results.",
     features: ["Digital preview", "Comprehensive plan", "Stunning results", "Personalized approach"],
   },
   {
     id: 15,
     title: "Teeth Whitening",
-    image: "src/assets/services/teath-whitening.jpg",
+    image: getCloudinaryUrl("services/moi6fpms11y3yv0dqkoq"),
     description: "Professional whitening treatments for a brighter, more confident smile with lasting results.",
     features: ["Instant results", "Safe procedure", "Long-lasting", "Professional grade"],
   },
