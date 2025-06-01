@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom"
 
 const CLOUDINARY_CLOUD_NAME = "dyd8cwf8e";
 const CLOUDINARY_BASE_URL = `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload`;
@@ -87,7 +88,7 @@ const services = [
   {
     id: 9,
     title: "Teeth Cleaning",
-    image: getCloudinaryUrl("services/hq2c23mh5njidsh6e2il"),
+    image: getCloudinaryUrl("services/jdggyh8nmmjdyqswp4yi"),
     description: "Professional dental hygiene services to maintain optimal oral health and prevent disease.",
     features: ["Deep cleaning", "Plaque removal", "Fresh breath", "Preventive care"],
   },
@@ -115,7 +116,7 @@ const services = [
   {
     id: 13,
     title: "Dental Jewellery",
-    image: getCloudinaryUrl("services/cognogkcyx20rhgcuju6"),
+    image: getCloudinaryUrl("services/c3emuqrnomdtgplyprju"),
     description: "Add sparkle to your smile with safe, removable dental gems and unique accessories.",
     features: ["Safe materials", "Easy removal", "Unique designs", "Professional application"],
   },
@@ -196,6 +197,7 @@ const OptimizedImage = ({ src, alt, className, onLoad }: OptimizedImageProps) =>
 function ServicesComponent() {
   const [activeService, setActiveService] = useState(0);
   const [preloadedImages, setPreloadedImages] = useState(new Set());
+  const navigate = useNavigate();
 
   // Preload next and previous images
   useEffect(() => {
@@ -220,6 +222,10 @@ function ServicesComponent() {
   const handleServiceChange = (newIndex: any) => {
     setActiveService(newIndex);
   };
+
+  const handleClick = () => {
+    navigate("/appointment");
+  }
 
   return (
     <section className="py-16 bg-gray-50 dark:bg-slate-900">
@@ -309,7 +315,7 @@ function ServicesComponent() {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row pt-6">
-                  <button className="bg-[#FF5722] hover:bg-[#E64A19] text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all duration-200 transform hover:scale-105">
+                  <button onClick={handleClick} className="bg-[#FF5722] hover:bg-[#E64A19] text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all duration-200 transform hover:scale-105">
                     BOOK NOW
                   </button>
                 </div>
