@@ -5,23 +5,42 @@ import { validationSchema } from "@/utils/validations/contactFormSchema";
 import emailjs from "emailjs-com";
 
 interface AppointmentFormValues {
-    name: string;
-    phone: string;
-    email: string;
-    message: string;
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+  date: string;
+  time?: string; // Optional field for time
 }
 
 const sendEmail = (values: AppointmentFormValues): Promise<any> => {
-    return emailjs.send(
-        "service_rk6vmir", 
-        "template_jjfwj4a",
-        { ...values },
-        "CbGnmW7jNz-bngaVf" 
-    );
+  return emailjs.send(
+    "service_rk6vmir",
+    "template_jjfwj4a",
+    {
+    name: values.name,
+    phone: values.phone,
+    email: values.email,
+    message: values.message,
+    date: values.date,
+    time: values.time || "Not specified",
+  },
+    "CbGnmW7jNz-bngaVf"
+  );
 };
 
 const AppointmentBooking = () => {
   const [showPopup, setShowPopup] = useState(false);
+
+  // Calculate next week's date range
+  const today = new Date();
+  const nextWeekStart = new Date(today);
+  nextWeekStart.setDate(today.getDate() + 1);
+  const nextWeekEnd = new Date(today);
+  nextWeekEnd.setDate(today.getDate() + 7);
+
+  const minDate = nextWeekStart.toISOString().split("T")[0];
+  const maxDate = nextWeekEnd.toISOString().split("T")[0];
 
   return (
     <div className="min-h-screen bg-white py-8 px-4 transition-colors duration-300">
@@ -56,16 +75,22 @@ const AppointmentBooking = () => {
 
         {/* Contact Form with Formik */}
         <Formik
-          initialValues={{ name: "", phone: "", email: "", message: "" }}
+          initialValues={{
+            name: "",
+            phone: "",
+            email: "",
+            message: "",
+            date: "",
+            time: "",
+          }}
           validationSchema={validationSchema}
           onSubmit={async (values, { resetForm }) => {
             try {
-                console.log("cameee here", values);
-                await sendEmail(values);
-                setShowPopup(true);
-                resetForm();
+              await sendEmail(values);
+              setShowPopup(true);
+              resetForm();
             } catch (error) {
-                console.error("Error sending email:", error);
+              console.error("Error sending email:", error);
             }
           }}
         >
@@ -118,6 +143,41 @@ const AppointmentBooking = () => {
                 />
                 <ErrorMessage
                   name="email"
+                  component="div"
+                  className="text-red-500 text-sm mt-1"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Preferred Date*
+                </label>
+                <Field
+                  type="date"
+                  name="date"
+                  min={minDate}
+                  max={maxDate}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 bg-white text-black"
+                />
+                <ErrorMessage
+                  name="date"
+                  component="div"
+                  className="text-red-500 text-sm mt-1"
+                />
+              </div>
+              {/* Time (optional) */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Preferred Time (optional)
+                </label>
+                <Field
+                  type="time"
+                  name="time"
+                  min="10:00"
+                  max="18:00"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 bg-white text-black"
+                />
+                <ErrorMessage
+                  name="time"
                   component="div"
                   className="text-red-500 text-sm mt-1"
                 />
