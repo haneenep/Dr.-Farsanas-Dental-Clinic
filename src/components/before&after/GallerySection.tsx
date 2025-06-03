@@ -105,7 +105,7 @@ const GallerySection = () => {
                   Procedures: <span className="text-foreground">{caseItem.procedure}</span>
                 </p>
               </div>
-              <div className="w-full max-w-4xl mx-auto mb-10">
+              <div className="w-full max-w-full mx-auto mb-10">
                 <div className="grid md:grid-cols-2 gap-6 mb-4">
                   {/* Before Image */}
                   <div
@@ -125,7 +125,7 @@ const GallerySection = () => {
                       <img
                         src={pair.beforeImage}
                         alt="Before treatment"
-                        className="w-full h-64 md:h-72 object-cover rounded-lg"
+                        className="w-full h-auto max-h-[500px] object-contain rounded-lg"
                       />
                       {/* Overlay for After hover (desktop only) */}
                       <div
@@ -174,7 +174,7 @@ const GallerySection = () => {
                       <img
                         src={pair.afterImage}
                         alt="After treatment"
-                        className="w-full h-64 md:h-72 object-cover rounded-lg"
+                        className="w-full h-auto max-h-[500px] object-contain rounded-lg"
                       />
                       {/* Overlay for Before hover (desktop only) */}
                       <div
