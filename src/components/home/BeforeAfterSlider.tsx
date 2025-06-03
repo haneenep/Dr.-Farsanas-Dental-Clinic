@@ -10,7 +10,6 @@ import gapcase1before1 from "../../assets/works/teath gap before 1.png";
 import gapcase1after1 from "../../assets/works/teath gap after 1.png";
 import MoreButton from "../common/MoreButton";
 
-// Reusable MoreGalleryButton component
 
 const BeforeAfterSlider = ({
   before,
@@ -83,7 +82,6 @@ const BeforeAfterSlider = ({
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
       >
-        {/* Before Image */}
         <div className="absolute inset-0">
           <img
             src={before}
@@ -92,7 +90,6 @@ const BeforeAfterSlider = ({
             draggable={false}
           />
         </div>
-        {/* After Image */}
         <div
           className="absolute inset-0 overflow-hidden"
           style={{
@@ -107,7 +104,6 @@ const BeforeAfterSlider = ({
             draggable={false}
           />
         </div>
-        {/* Slider Line */}
         <div
           className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg z-10"
           style={{
@@ -115,7 +111,6 @@ const BeforeAfterSlider = ({
             transition: isDragging ? "none" : "left 0.4s cubic-bezier(0.4,0,0.2,1)",
           }}
         >
-          {/* Slider Handle */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg border-2 border-sky-500 flex items-center justify-center cursor-col-resize hover:scale-110 transition-transform duration-200">
             <div className="flex space-x-0.5">
               <div className="w-0.5 h-3 bg-sky-500 rounded-full"></div>

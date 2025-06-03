@@ -10,7 +10,7 @@ interface AppointmentFormValues {
   email: string;
   message: string;
   date: string;
-  time?: string; // Optional field for time
+  time?: string;
 }
 
 const sendEmail = (values: AppointmentFormValues): Promise<any> => {
@@ -73,7 +73,6 @@ const AppointmentBooking = () => {
           </h1>
         </div>
 
-        {/* Contact Form with Formik */}
         <Formik
           initialValues={{
             name: "",
@@ -96,7 +95,6 @@ const AppointmentBooking = () => {
         >
           {({ isSubmitting, isValid }) => (
             <Form className="bg-white rounded-lg shadow p-6 space-y-5 transition-colors duration-300">
-              {/* Name */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Name*
@@ -113,7 +111,6 @@ const AppointmentBooking = () => {
                   className="text-red-500 text-sm mt-1"
                 />
               </div>
-              {/* Phone */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Phone Number*
@@ -130,7 +127,6 @@ const AppointmentBooking = () => {
                   className="text-red-500 text-sm mt-1"
                 />
               </div>
-              {/* Email */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Email*
@@ -164,7 +160,6 @@ const AppointmentBooking = () => {
                   className="text-red-500 text-sm mt-1"
                 />
               </div>
-              {/* Time (optional) */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Preferred Time (optional)
@@ -182,7 +177,6 @@ const AppointmentBooking = () => {
                   className="text-red-500 text-sm mt-1"
                 />
               </div>
-              {/* Message (optional) */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Message / Reason
@@ -206,7 +200,6 @@ const AppointmentBooking = () => {
           )}
         </Formik>
 
-        {/* Location */}
         <div className="mt-8 text-center">
           <div className="flex items-center justify-center text-gray-500 mb-4">
             <MapPin className="w-4 h-4 mr-2" />
@@ -214,7 +207,6 @@ const AppointmentBooking = () => {
           </div>
         </div>
 
-        {/* Map */}
         <div className="mt-6 bg-white rounded-lg overflow-hidden shadow-sm">
           <iframe
             title="Clinic Location"
@@ -228,7 +220,6 @@ const AppointmentBooking = () => {
           ></iframe>
         </div>
 
-        {/* Popup */}
         {showPopup && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
             <div className="bg-white rounded-lg shadow-lg p-8 max-w-xs w-full text-center relative">

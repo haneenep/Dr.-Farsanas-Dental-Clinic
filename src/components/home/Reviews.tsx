@@ -39,9 +39,8 @@ const PatientReviewsSection = () => {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.7, type: "spring" }}
     >
-      {/* Left Side - Review */}
+      {/* Left Side */}
       <div className="flex-1 bg-black text-white flex items-center justify-center relative py-10 md:py-0">
-        {/* Navigation Arrows */}
         <button
           onClick={prevReview}
           className="absolute left-4 top-4 md:left-8 md:top-1/2 md:transform md:-translate-y-1/2 text-white hover:text-gray-300 transition-colors duration-200 z-10"
@@ -60,23 +59,19 @@ const PatientReviewsSection = () => {
 
         {/* Review Content */}
         <div className="max-w-xl mx-auto px-4 md:px-12 text-center">
-          {/* Quote Mark */}
           <div className="text-4xl md:text-6xl font-serif mb-4 md:mb-8 opacity-80">
             "
           </div>
 
-          {/* Review Text */}
           <p className="text-base md:text-xl leading-relaxed mb-6 md:mb-12 font-light">
             {reviews[currentReview].text}
           </p>
 
-          {/* Author */}
           <p className="text-base md:text-lg font-light">
             — {reviews[currentReview].author}
           </p>
         </div>
 
-        {/* Pagination Dots */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 md:space-x-3">
           {reviews.map((_, index) => (
             <button
@@ -93,7 +88,7 @@ const PatientReviewsSection = () => {
         </div>
       </div>
 
-      {/* Right Side - Title */}
+      {/* Right Side */}
       <div className="flex-1 bg-gray-100 dark:bg-background flex items-center justify-center relative overflow-hidden py-10 md:py-0">
         {/* Background Pattern/Texture */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -114,7 +109,6 @@ const PatientReviewsSection = () => {
             from our patients
           </p>
           
-          {/* Reviews Link */}
           <div className="flex items-center justify-center space-x-2 text-sky-500 text-base md:text-lg font-medium">
             <span>300+ 5-Star Reviews</span>
             <ChevronRight className="w-5 h-5" />

@@ -4,7 +4,6 @@ import AppointmentButton from "../common/AppointmentButton";
 import { motion } from "framer-motion";
 
 const DentalHomeIntro = () => {
-  // Use the hook to get the current text
   const [text] = useTypewriter({
     words: ["Perfect Smile Starts Here"],
     loop: 0,

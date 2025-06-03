@@ -199,7 +199,6 @@ function ServicesComponent() {
   const [preloadedImages, setPreloadedImages] = useState(new Set());
   const navigate = useNavigate();
 
-  // Preload next and previous images
   useEffect(() => {
     const preloadImage = (index: any) => {
       if (preloadedImages.has(index)) return;
@@ -211,7 +210,6 @@ function ServicesComponent() {
       img.src = services[index].image;
     };
 
-    // Preload current, next, and previous images
     const currentIndex = activeService;
     const nextIndex = (currentIndex + 1) % services.length;
     const prevIndex = currentIndex === 0 ? services.length - 1 : currentIndex - 1;
@@ -236,7 +234,6 @@ function ServicesComponent() {
           </h3>
         </div>
 
-        {/* Service Selector */}
         <div className="flex flex-wrap gap-2 justify-center mb-10">
           {services.map((service, idx) => (
             <button
@@ -253,9 +250,8 @@ function ServicesComponent() {
           ))}
         </div>
 
-        {/* Main Service Display */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-16">
-          {/* Left Side - Image */}
+          {/* Left Side */}
           <div className="order-2 lg:order-1">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl min-h-[400px] sm:min-h-[500px]">
               <AnimatePresence mode="wait">
@@ -278,7 +274,7 @@ function ServicesComponent() {
             </div>
           </div>
 
-          {/* Right Side - Service Content */}
+          {/* Right Side */}
           <div className="order-1 lg:order-2 space-y-6 relative min-h-[400px] sm:min-h-[500px]">
             <AnimatePresence mode="wait">
               <motion.div
@@ -298,7 +294,6 @@ function ServicesComponent() {
                   </p>
                 </div>
 
-                {/* Features List */}
                 <div className="space-y-3">
                   {services[activeService].features.map((feature, index) => (
                     <div key={index} className="flex items-start gap-3">
@@ -313,7 +308,6 @@ function ServicesComponent() {
                   </div>
                 </div>
 
-                {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row pt-6">
                   <button onClick={handleClick} className="bg-[#FF5722] hover:bg-[#E64A19] text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all duration-200 transform hover:scale-105">
                     BOOK NOW
@@ -324,7 +318,6 @@ function ServicesComponent() {
           </div>
         </div>
 
-        {/* Navigation Dots */}
         <div className="flex justify-center space-x-2">
           {services.map((_, idx) => (
             <button

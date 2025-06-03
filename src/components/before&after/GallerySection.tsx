@@ -1,7 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
-// Import your local images
 import cleaningBefore1 from "../../assets/works/cleaning before 1.png";
 import cleaningBefore2 from "../../assets/works/cleaning before 2.png";
 import cleaningAfter1 from "../../assets/works/cleaning after 1.png";
@@ -65,9 +64,7 @@ const cases = [
 ];
 
 const GallerySection = () => {
-  // Track hovered state per case and pair
   const [hovered, setHovered] = useState<{ caseIdx: number; pairIdx: number; side: "before" | "after" } | null>(null);
-  // Track current pair index for each case
   const [pairIndexes, setPairIndexes] = useState(() => cases.map(() => 0));
 
   const handlePrevPair = (caseIdx: number) => {
@@ -127,7 +124,6 @@ const GallerySection = () => {
                         alt="Before treatment"
                         className="w-full h-auto max-h-[500px] object-contain rounded-lg"
                       />
-                      {/* Overlay for After hover (desktop only) */}
                       <div
                         className={`
                           absolute inset-0 flex flex-col items-center justify-center
@@ -176,7 +172,6 @@ const GallerySection = () => {
                         alt="After treatment"
                         className="w-full h-auto max-h-[500px] object-contain rounded-lg"
                       />
-                      {/* Overlay for Before hover (desktop only) */}
                       <div
                         className={`
                           absolute inset-0 flex flex-col items-center justify-center
@@ -206,7 +201,6 @@ const GallerySection = () => {
                     </div>
                   </div>
                 </div>
-                {/* Pair navigation */}
                 {caseItem.pairs.length > 1 && (
                   <div className="flex justify-center gap-6 mt-2">
                     <button

@@ -1,7 +1,7 @@
-import { Activity, Camera, Sparkles } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import MoreButton from '../common/MoreButton';
+import { Activity, Camera, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import MoreButton from "../common/MoreButton";
 
 const DentalServicesSection = () => {
   const navigate = useNavigate();
@@ -10,30 +10,36 @@ const DentalServicesSection = () => {
       id: 1,
       title: "root canal",
       subtitle: "treatment",
-      description: "Advanced endodontic therapy to save infected teeth. Our gentle approach ensures comfort while preserving your natural smile with precision care.",
-      backgroundImage: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      icon: <Activity className="w-8 h-8" />
+      description:
+        "Advanced endodontic therapy to save infected teeth. Our gentle approach ensures comfort while preserving your natural smile with precision care.",
+      backgroundImage:
+        "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      icon: <Activity className="w-8 h-8" />,
     },
     {
       id: 2,
       title: "digital x-ray",
       subtitle: "imaging",
-      description: "State-of-the-art digital radiography provides instant, high-resolution images with 90% less radiation exposure for safer, more accurate diagnostics.",
-      backgroundImage: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      icon: <Camera className="w-8 h-8" />
+      description:
+        "State-of-the-art digital radiography provides instant, high-resolution images with 90% less radiation exposure for safer, more accurate diagnostics.",
+      backgroundImage:
+        "https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      icon: <Camera className="w-8 h-8" />,
     },
     {
       id: 3,
       title: "teeth cleaning",
       subtitle: "& hygiene",
-      description: "Professional deep cleaning removes plaque and tartar buildup. Our gentle yet thorough approach leaves your teeth sparkling and your gums healthy.",
-      backgroundImage: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      icon: <Sparkles className="w-8 h-8" />
-    }
+      description:
+        "Professional deep cleaning removes plaque and tartar buildup. Our gentle yet thorough approach leaves your teeth sparkling and your gums healthy.",
+      backgroundImage:
+        "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      icon: <Sparkles className="w-8 h-8" />,
+    },
   ];
 
   const handleMoreServices = () => {
-    navigate('/services');
+    navigate("/services");
   };
 
   const cardVariants = {
@@ -41,15 +47,14 @@ const DentalServicesSection = () => {
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.15, duration: 0.6, type: "spring" }
+      transition: { delay: i * 0.15, duration: 0.6, type: "spring" },
     }),
   };
 
   return (
     <div className="bg-background/95 text-foreground py-16 px-4 border-b backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -76,28 +81,27 @@ const DentalServicesSection = () => {
               variants={cardVariants}
             >
               {/* Background Image */}
-              <div 
+              <div
                 className="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-300"
                 style={{ backgroundImage: `url(${service.backgroundImage})` }}
               />
-              {/* Gradient Overlay for better text readability */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/80 to-background/60 dark:from-background/95 dark:via-background/80 dark:to-background/60" />
-              
-              {/* Content */}
+
               <div className="relative z-20 p-6 flex flex-col h-full">
-                {/* Icon */}
                 <div className="flex justify-center items-center mb-6 text-sky-500">
                   {service.icon}
                 </div>
-                
-                {/* Title */}
+
                 <h3 className="text-2xl md:text-3xl font-semibold text-center mb-4">
-                  <span className="text-sky-500 capitalize">{service.title}</span>
+                  <span className="text-sky-500 capitalize">
+                    {service.title}
+                  </span>
                   <br />
-                  <span className="text-foreground capitalize">{service.subtitle}</span>
+                  <span className="text-foreground capitalize">
+                    {service.subtitle}
+                  </span>
                 </h3>
-                
-                {/* Description */}
+
                 <p className="text-muted-foreground text-center leading-relaxed flex-grow flex items-center font-medium">
                   {service.description}
                 </p>
@@ -106,15 +110,14 @@ const DentalServicesSection = () => {
           ))}
         </div>
 
-        {/* More Services Button */}
-        <motion.div 
+        <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, type: "spring" }}
         >
-        <MoreButton onClick={handleMoreServices} children='More Services'/>
+          <MoreButton onClick={handleMoreServices} children="More Services" />
         </motion.div>
       </div>
     </div>

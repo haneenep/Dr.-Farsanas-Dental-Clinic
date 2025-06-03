@@ -49,7 +49,6 @@ const ClinicImageGallery = () => {
   return (
     <section className=" bg-background py-16 md:py-20 mt-0 flex items-center relative transition-colors duration-300">
     <div className="container mx-auto px-4 max-w-7xl">
-      {/* Main Image Display */}
       <div className="relative mb-4">
         <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl bg-white">
           <img
@@ -58,7 +57,6 @@ const ClinicImageGallery = () => {
             className="w-full h-full object-cover transition-all duration-500"
           />
 
-          {/* Overlay with title and description */}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
             <h3 className="text-white text-2xl md:text-3xl font-bold mb-2">
               {images[currentImage].title}
@@ -68,7 +66,6 @@ const ClinicImageGallery = () => {
             </p>
           </div>
 
-          {/* Navigation Arrows */}
           <button
             onClick={prevImage}
             className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
@@ -85,7 +82,6 @@ const ClinicImageGallery = () => {
         </div>
       </div>
 
-      {/* Dots Indicator */}
       <div className="flex justify-center space-x-2">
         {images.map((_, index) => (
           <button
