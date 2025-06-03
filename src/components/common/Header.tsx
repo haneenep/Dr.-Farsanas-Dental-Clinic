@@ -11,7 +11,7 @@ import {
 import { Menu } from "lucide-react";
 import { ModeToggle } from "../ui/ThemeToggle";
 import AppointmentButton from "./AppointmentButton";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 // Nav items shared between components
 const navItems = ["Home", "Services", "Before & After"];
@@ -19,7 +19,16 @@ const navItems = ["Home", "Services", "Before & After"];
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
+  const isHomePage = location.pathname === "/home" || location.pathname === "/";
+  const handleLogoClick = () => {
+    if (isHomePage) {
+      window.scrollTo(0, 0);
+    } else {
+      navigate("/");
+    }
+  };
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-14 sm:h-16 items-center px-4 sm:px-8">
@@ -41,13 +50,14 @@ function Header() {
                 Mobile navigation menu
               </SheetDescription>
             </SheetHeader>
-            <MobileNav />
+            <MobileNav setMobileOpen={setMobileOpen} />
           </SheetContent>
         </Sheet>
 
         {/* Logo + Clinic Name */}
         <div className="flex items-center flex-grow md:flex-grow-0 md:mr-4">
           <img
+            onClick={handleLogoClick}
             src="/logo.svg"
             alt="Clinic Logo"
             width={55}
@@ -105,7 +115,8 @@ function Header() {
   );
 }
 
-function MobileNav() {
+function MobileNav({ setMobileOpen }: { setMobileOpen: (open: boolean) => void }) {
+  const location = useLocation();
   return (
     <div className="flex flex-col space-y-2 pt-6">
       {/* Logo in mobile */}
@@ -130,6 +141,7 @@ function MobileNav() {
             <Link
               to={path}
               key={item}
+              onClick={() => setMobileOpen(false)}
               className={`px-3 py-2 rounded-md text-sm font-medium whitespace-nowrap transition-all duration-200 ease-in-out border-b-2
                 ${
                   isActive
@@ -147,6 +159,7 @@ function MobileNav() {
           className="mx-4 mt-4 rounded-full font-semibold"
           size="default"
           showIcon={false}
+          onClick={() => setMobileOpen(false)}
         >
           Book Appointment
         </AppointmentButton>
