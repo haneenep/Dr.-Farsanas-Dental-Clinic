@@ -4,6 +4,7 @@ import Services from "./pages/user/Services";
 import MainLayout from "./components/common/layout/MainLayout";
 import ComingSoonPage from "./pages/ComingSoon";
 import Appointment from "./pages/user/Appointment";
+import BeforeAfterGallery from "./pages/user/BeforeAfterGallery";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/gallery" element={<ComingSoonPage />} />
             <Route path="/contact-us" element={<ComingSoonPage />} />
             <Route path="/appointment" element={<Appointment />} />
+            <Route path="/before-&-after" element={<BeforeAfterGallery />} />
           </Routes>
         </MainLayout>
       </Router>

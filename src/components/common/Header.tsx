@@ -14,7 +14,7 @@ import AppointmentButton from "./AppointmentButton";
 import { Link, useLocation } from "react-router-dom";
 
 // Nav items shared between components
-const navItems = ["Home", "Services", "Gallery"];
+const navItems = ["Home", "Services", "Before & After"];
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
