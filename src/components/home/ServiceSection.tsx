@@ -1,6 +1,7 @@
 import { Activity, Camera, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import MoreButton from '../common/MoreButton';
 
 const DentalServicesSection = () => {
   const navigate = useNavigate();
@@ -113,27 +114,7 @@ const DentalServicesSection = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, type: "spring" }}
         >
-          <motion.button
-            onClick={handleMoreServices}
-            className="inline-flex items-center px-8 py-4 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
-            whileHover={{ scale: 1.08, boxShadow: "0 8px 24px rgba(56,189,248,0.25)" }}
-            whileTap={{ scale: 0.97 }}
-          >
-            <span className="mr-2">More Services</span>
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </motion.button>
+        <MoreButton onClick={handleMoreServices} children='More Services'/>
         </motion.div>
       </div>
     </div>
